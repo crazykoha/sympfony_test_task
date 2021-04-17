@@ -4,7 +4,8 @@
 namespace App\Service\ServiceProtocol;
 
 
-class ProtocolInterface
+interface ProtocolInterface
 {
-
+    public function getData();
+    public function setData($data);
 }

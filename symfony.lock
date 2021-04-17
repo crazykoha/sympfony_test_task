@@ -88,6 +88,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "grpc/grpc": {
+        "version": "1.36.0"
+    },
     "laminas/laminas-code": {
         "version": "4.2.0"
     },

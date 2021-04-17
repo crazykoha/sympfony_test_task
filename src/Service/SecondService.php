@@ -4,18 +4,21 @@
 namespace App\Service;
 
 
-use App\Validators\FirstServiceValidator;
-use App\Validators\ValidatorInterface;
+use App\Service\ServiceProtocol\GrpcProtocol;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-class FirstService extends AbstractService
+class SecondService extends AbstractService
 {
     public function getProtocolClass(): string
     {
-        return "App\Service\ServiceProtocol\RestApiProtocol";
+        return GrpcProtocol::class;
     }
 
-    public function getValidator(): ValidatorInterface
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        return new FirstServiceValidator();
+        $metadata->addPropertyConstraint('field1', new Assert\Type('string'));
+        $metadata->addPropertyConstraint('field2', new Assert\Type('bool'));
+        $metadata->addPropertyConstraint('field3', new Assert\Type('int'));
     }
 }
